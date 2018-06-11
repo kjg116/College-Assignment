@@ -1,0 +1,4 @@
+The YEAR is 2014.
+the daTe is APRIL 6th.
+This course is INTRO to comPTEr Programming, also knowN as CSE1284.
+It will ALSO be taught in the FalL 2014 SEMESTER!

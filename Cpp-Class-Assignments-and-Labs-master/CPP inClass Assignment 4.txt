@@ -1,0 +1,50 @@
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+int main() {
+    int userElemenet = 0;
+    int userArrSize = 0;
+    cout << "Array Size: " << endl;
+    cin >> userArrSize;
+
+    int *array = new int [userArrSize];
+    for (int i = 0; i < userArrSize; i++){
+        array[i] = i*2;
+    }
+
+    for (int i = 0; i < userArrSize; i++){
+        cout << "Element " << i + 1 << "? ";
+        cin >> userElemenet;
+        array[i] = userElemenet;
+    }
+
+    cout << "[";
+    for (int i = 0; i < userArrSize; i++){
+        cout << array[i] << " ";
+    }
+    cout << "]" << endl;
+
+    int userNewSize = 0;
+    cout << "New array size: ";
+    cin >> userNewSize;
+
+    int *array2 = new int [userNewSize];
+    for (int i = 0; i < userNewSize; i++){
+        array2[i] = i*2;
+    }
+    cout << "[";
+    for (int i = 0; i < userNewSize; i++){
+        cout << array2[i] << " ";
+    }
+    cout << "]" << endl;
+
+    delete[] array;
+    delete[] array2;
+
+    system("PAUSE");
+
+
+    return 0;
+}

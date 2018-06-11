@@ -1,0 +1,98 @@
+#include <iostream>
+#include <cstdlib>
+#include "matrix.h"
+
+using namespace std;
+
+Matrix::Matrix() {
+    this->data[0][0] = 1;
+    this->data[0][1]= 0;
+    this->data[0][2] = 0;
+    this->data[1][0]= 0;
+    this->data[1][1]= 1;
+    this->data[1][2]=0;
+    this->data[2][0]=0;
+    this->data[2][1]=0;
+    this->data[2][2] = 1;
+}
+Matrix::Matrix(float m00, float m01, float m02,
+                     float m10, float m11, float m12,
+                     float m20, float m21, float m22){
+    this->data[0][0] = m00;
+    this->data[0][1] = m01;
+    this->data[0][2] = m02;
+    this->data[1][0] = m10;
+    this->data[1][1] = m11;
+    this->data[1][2] = m12;
+    this->data[2][0] = m20;
+    this->data[2][1] = m21;
+    this->data[2][2] = m22;
+}
+Matrix::Matrix(const Matrix& mat){
+    this->data[0][0] = mat.get(0,0);
+    this->data[0][1] = mat.get(0,1);
+    this->data[0][2] = mat.get(0,2);
+    this->data[1][0] = mat.get(1,0);
+    this->data[1][1] = mat.get(1,1);
+    this->data[1][2] = mat.get(1,2);
+    this->data[2][0] = mat.get(2,0);
+    this->data[2][1] = mat.get(2,1);
+    this->data[2][2] = mat.get(2,2);
+}
+float Matrix::get(unsigned int row, unsigned int col) const {
+
+    return this->data[row][col];
+}
+void Matrix::set(unsigned int row, unsigned int col, float value){
+
+    this->data[row][col] = value;
+}
+Matrix Matrix::operator+(const Matrix &rhs) const {
+    Matrix matrix;
+    float value;
+    for (unsigned int i = 0; i < 3; i++ ){
+        for (unsigned int j = 0; j < 3; j++){
+            value = this->data[i][j] + rhs.get(i,j);
+            matrix.set(i,j,value);
+        }
+    }
+    return matrix;
+}
+Matrix Matrix::operator-(const Matrix& rhs) const {
+    Matrix matrix;
+    float value;
+    for (unsigned int i = 0; i < 3; i++ ){
+        for (unsigned int j = 0; j < 3; j++){
+            value = this->data[i][j] - rhs.get(i,j);
+            matrix.set(i,j,value);
+        }
+    }
+    return matrix;
+}
+Matrix Matrix::operator*(const Matrix& rhs) const{
+    Matrix matrix;
+    float value[3][3];
+    float value2;
+    for (unsigned int i = 0; i < 3; i++ ){
+        for (unsigned int j = 0; j < 3; j++){
+            value[i][j] = 0;
+            for (unsigned int k = 0; k < 3; k++ ){
+                value[i][j] = value[i][j] + (this->data[i][k] * rhs.get(k,j));
+                value2 = value[i][j];
+                matrix.set(i,j,value2);
+            }
+        }
+    }
+    return matrix;
+}
+Matrix Matrix::operator*(float rhs) const{
+    Matrix matrix;
+    float value;
+    for (unsigned int i = 0; i < 3; i++ ){
+        for (unsigned int j = 0; j < 3; j++){
+            value = this->data[i][j] * rhs;
+            matrix.set(i,j,value);
+        }
+    }
+    return matrix;
+}

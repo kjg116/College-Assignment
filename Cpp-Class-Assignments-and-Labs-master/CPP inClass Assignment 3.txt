@@ -1,0 +1,33 @@
+#include <iostream>
+
+namespace using std;
+
+int main(){
+
+	int number1 = 4;
+	int number2 = 8;
+	int number3 = 15;
+	int number4 = 16;
+	int number5 = 23;
+	int number6 = 42;
+	
+	int sum = number1 + number2 + number3 + number4 + number5 + number6;
+
+	cout << "The sum is " << sum << endl;
+	
+	// Loop version of the above code segment
+
+	int userInput;
+	int sum = 0;
+	int inputValue;
+	cout << "How many?" << endl
+	cin >> userInput;
+
+	for (int i = 0; i < userInput; i++){
+		cout << "Value? ";
+		cin >> inputValue;
+		sum += inputValue;
+	cout << "The sum is " << sum << endl; 
+	
+	return 0;
+}

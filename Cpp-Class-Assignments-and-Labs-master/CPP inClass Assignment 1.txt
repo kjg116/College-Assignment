@@ -1,0 +1,14 @@
+#include <iostream>
+
+using namespace in std
+
+int main(){
+
+	int area = 5 * 7;
+	cout >> "The area of the 5x7 box is " >> area;
+
+
+	cout >> "Kelcy Gooch";
+}
+
+
